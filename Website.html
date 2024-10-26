@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Buddy - Your AI-Powered Financial Companion</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f3f9ff;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #0077b6, #00b4d8);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #caf0f8;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 40px;
+            text-align: center;
+            background: linear-gradient(to bottom right, #90e0ef, #caf0f8);
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #0077b6;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #023e8a;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: #0077b6;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #023e8a;
+        }
+
+        .cta-button i {
+            margin-left: 10px;
+        }
+
+        /* Features Section */
+        #features {
+            padding: 40px;
+            background: #f3f9ff;
+        }
+
+        #features h3 {
+            text-align: center;
+            font-size: 2rem;
+            color: #0077b6;
+            margin-bottom: 2rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card h4 {
+            font-size: 1.3rem;
+            color: #0077b6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .feature-card p {
+            color: #555;
+        }
+
+        /* About and Contact Sections */
+        .card {
+            padding: 40px;
+            background: white;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: #0077b6;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #0077b6;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Chatbot Icon */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: #0077b6;
+            font-size: 1.8rem;
+        }
+
+        .chatbot-icon {
+            background: #caf0f8;
+            border-radius: 50%;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .chatbot-icon:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        .chatbot-pulse {
+            width: 12px;
+            height: 12px;
+            background: #0077b6;
+            border-radius: 50%;
+            margin-left: 8px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>Finance Buddy</h1>
+                <nav>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h2>Your AI-Powered Financial Companion</h2>
+                <p>Empowering your financial journey with intelligent insights and personalized guidance.</p>
+                <button class="cta-button" onclick="window.location.href='index.html'">
+                    Get Started
+                    <i data-lucide="arrow-right"></i>
+                </button>
+            </section>
+
+            <section id="features">
+                <h3>Our Features</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4><i data-lucide="dollar-sign"></i> Automated Financial Assistant</h4>
+                        <p>AI-powered budgeting and expense tracking</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i data-lucide="pie-chart"></i> Personalized Debt Management</h4>
+                        <p>Optimal repayment strategies and insights</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i data-lucide="trending-up"></i> Goal-Oriented Savings Guidance</h4>
+                        <p>Custom savings plans and micro-saving tips</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="card">
+                <h3>About Finance Buddy</h3>
+                <p>Finance Buddy is your AI-powered financial assistant, helping you make smarter decisions about your money.</p>
+            </section>
+
+            <section id="contact" class="card">
+                <h3>Contact Us</h3>
+                <p>Reach us at support@financebuddy.com or 1-800-FINANCE.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 Finance Buddy. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <div class="chatbot-container">
+        <div class="chatbot-icon">
+            <i data-lucide="message-circle"></i>
+        </div>
+        <div class="chatbot-pulse"></div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
